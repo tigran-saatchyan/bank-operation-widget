@@ -1,5 +1,83 @@
 import pytest
 
+OPERATION_DATA = {
+    "date": "2022-01-01",
+    "description": 'Test Operation',
+    "amount": "475",
+    "currency": 'USD',
+    "masked_from_account": 'Credit Card Number 1234 56** **** '
+                           '5678 -> ',
+    "masked_to_account": 'Счет **5678'
+}
+
+GET_OPERATION_DATA = [
+    (
+        {
+            'from': 'Credit Card Number 1234567812345678',
+            'to': 'Счет 1234567812345678',
+            'date': '2022-01-01T10:00:00',
+            'description': 'Test Operation',
+            'operationAmount': {
+                'amount': "475",
+                'currency': {
+                    'name': 'USD'
+                }
+            }
+        },
+        OPERATION_DATA,
+        [
+            "Date should be retrieved correctly",
+            "Description should be retrieved correctly",
+            "Amount should be retrieved correctly",
+            "Currency should be retrieved correctly",
+            "From account should be masked correctly",
+            "To account should be masked correctly"
+        ],
+
+    ),
+    (
+        {
+            'to': 'Счет 1234567812345678',
+            'date': '2022-03-01T10:00:00',
+            'description': 'Открытие вклада',
+            'operationAmount': {
+                'amount': "5478",
+                'currency': {
+                    'name': 'руб.'
+                }
+            }
+        },
+        {
+            "date": "2022-03-01",
+            "description": 'Открытие вклада',
+            "amount": "5478",
+            "currency": 'руб.',
+            "masked_from_account": '',
+            "masked_to_account": 'Счет **5678'
+        },
+        [
+            "Date should be retrieved correctly",
+            "Description should be retrieved correctly",
+            "Amount should be retrieved correctly",
+            "Currency should be retrieved correctly",
+            "From account should be masked correctly",
+            "To account should be masked correctly"
+        ]
+    )
+]
+
+MASK_CARD_OR_ACCOUNT_NUMBER = [
+    (
+        'Credit Card Number 1234567812345678',
+        'Credit Card Number 1234 56** **** 5678',
+        'Credit card number should be masked correctly'),
+    (
+        'Счет 1234567812345678',
+        'Счет **5678',
+        'Account number should be masked correctly'
+    )
+]
+
 
 @pytest.fixture()
 def json_test_data():
@@ -9,6 +87,16 @@ def json_test_data():
         {'state': 'EXECUTED', 'date': '2022-03-01'},
         {'state': 'EXECUTED', 'date': '2022-04-01'}
     ]
+
+
+@pytest.fixture()
+def card_num_sample():
+    return '1234567812345678'
+
+
+@pytest.fixture()
+def account_num_sample():
+    return '1234567812345678'
 
 
 @pytest.fixture()
