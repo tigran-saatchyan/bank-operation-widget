@@ -30,10 +30,8 @@ def test_display_recent_operations(
     mock_filter_executed_operations.return_value = operations
     mock_get_operation_data.side_effect = lambda operation: operation_data
 
-    # Call the function
     display_recent_operations()
 
-    # Assert that the expected calls were made
     assert mock_load_data_from_file.called
     assert mock_filter_executed_operations.called
 
