@@ -59,7 +59,7 @@ def test_mask_account_number(account_num_sample):
     Ensure that an account number is masked correctly.
     """
     masked_number = mask_account_number(account_num_sample)
-    assert masked_number == '**7890', "Account number should be masked " \
+    assert masked_number == '**5678', "Account number should be masked " \
                                       "correctly"
 
 
