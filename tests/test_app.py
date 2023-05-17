@@ -1,3 +1,5 @@
+""" Tests for App module """
+
 from unittest.mock import call, patch
 
 from bank_operation_widget.app import display_recent_operations
@@ -16,6 +18,12 @@ def test_display_recent_operations(
     mock_operations,
     mock_operation_data
 ):
+    """
+    Test the display_recent_operations() function.
+
+    Ensure that the function calls the expected methods
+    and makes the expected calls.
+    """
     data = mock_data
     operations = mock_operations
     operation_data = mock_operation_data
