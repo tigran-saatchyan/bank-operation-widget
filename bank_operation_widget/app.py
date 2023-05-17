@@ -1,5 +1,4 @@
 """ Main APP module """
-from typing import List
 
 from bank_operation_widget.utils import filter_executed_operations, \
     get_operation_data, load_data_from_file, print_operation

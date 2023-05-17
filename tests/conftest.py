@@ -1,3 +1,4 @@
+""" Conftest module """
 import pytest
 
 OPERATION_DATA = {
@@ -81,6 +82,11 @@ MASK_CARD_OR_ACCOUNT_NUMBER = [
 
 @pytest.fixture()
 def json_test_data():
+    """
+    Fixture for JSON test data.
+
+    Returns a list of dictionaries representing test data.
+    """
     return [
         {'state': 'EXECUTED', 'date': '2022-01-01'},
         {'state': 'CANCELED', 'date': '2022-02-01'},
@@ -91,17 +97,25 @@ def json_test_data():
 
 @pytest.fixture()
 def card_num_sample():
+    """
+    Fixture for a sample credit card number.
+
+    Returns a sample credit card number as a string.
+    """
     return '1234567812345678'
 
 
 @pytest.fixture()
 def account_num_sample():
+    """
+    Fixture for a sample account number.
+
+    Returns a sample account number as a string.
+    """
     return '1234567812345678'
 
 
-@pytest.fixture()
-def mock_data():
-    return [
+MOCK_DATA = [
         {
             "id": 441945886,
             "state": "EXECUTED",
@@ -164,9 +178,7 @@ def mock_data():
     ]
 
 
-@pytest.fixture()
-def mock_operations():
-    return [
+MOCK_OPERATIONS = [
         {
             "id": 441945886,
             "state": "EXECUTED",
@@ -227,10 +239,7 @@ def mock_operations():
         }
     ]
 
-
-@pytest.fixture()
-def mock_operation_data():
-    return [
+MOCK_OPERATION_DATA = [
         {
             "date": "2019-08-26",
             "description": "Перевод организации",

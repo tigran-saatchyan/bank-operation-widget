@@ -2,7 +2,7 @@
 
 import json
 import os
-from typing import Any, List
+from typing import Any
 
 
 def load_data_from_file() -> dict:
@@ -13,7 +13,7 @@ def load_data_from_file() -> dict:
     :rtype: dict
     """
     file_path: str = os.path.join(os.path.dirname(__file__), 'operations.json')
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="UTF-8") as file:
         data: dict = json.load(file)
     return data
 
@@ -45,9 +45,7 @@ def mask_credit_card_number(card_number: str) -> str:
     :return: The masked credit card number.
     :rtype: str
     """
-    return '{} {}** **** {}'.format(
-        card_number[:4], card_number[4:6], card_number[-4:]
-    )
+    return f'{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}'
 
 
 def mask_account_number(account_number: str) -> str:
@@ -59,7 +57,7 @@ def mask_account_number(account_number: str) -> str:
     :return: The masked account number.
     :rtype: str
     """
-    return '**{}'.format(account_number[-4:])
+    return f'**{account_number[-4:]}'
 
 
 def mask_card_or_account_number(account_number: str) -> str:
