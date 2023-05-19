@@ -2,6 +2,7 @@
 
 import json
 import os
+from datetime import datetime
 from typing import Any
 
 
@@ -81,6 +82,20 @@ def mask_card_or_account_number(account_number: str) -> str:
     return ' '.join([name, masked_number])
 
 
+def date_format_converter(date_string) -> str:
+    """
+    Convert a date string from the format "%Y-%m-%dT%H:%M:%S.%f" to
+    "DD.MM.YYYY".
+
+    :param date_string: The input date string
+    :type date_string: str
+    :return: The converted date string in the format "DD.MM.YYYY".
+    :rtype: str
+    """
+    datetime_obj = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")
+    return datetime_obj.strftime("%d.%m.%Y")
+
+
 def get_operation_data(operation: dict) -> dict:
     """
     Get operation data.
@@ -94,7 +109,7 @@ def get_operation_data(operation: dict) -> dict:
     to_account: str = operation['to']
 
     operation_data = {
-        "date": operation['date'].split('T')[0],
+        "date": date_format_converter(operation['date']),
         "description": operation['description'],
         "amount": operation['operationAmount']['amount'],
         "currency": operation['operationAmount']['currency']['name']
@@ -123,6 +138,7 @@ def print_operation(operation_data: dict):
     """
     print(f'{operation_data["date"]} {operation_data["description"]}')
     print(
-        f'{operation_data["masked_from_account"]}{operation_data["masked_to_account"]}'
+        f'{operation_data["masked_from_account"]}'
+        f'{operation_data["masked_to_account"]}'
     )
     print(f'{operation_data["amount"]} {operation_data["currency"]}\n')
