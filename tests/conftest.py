@@ -2,12 +2,11 @@
 import pytest
 
 OPERATION_DATA = {
-    "date": "2022-01-01",
+    "date": "01.01.2022",
     "description": 'Test Operation',
     "amount": "475",
     "currency": 'USD',
-    "masked_from_account": 'Credit Card Number 1234 56** **** '
-                           '5678 -> ',
+    "masked_from_account": 'Credit Card Number 1234 56** **** 5678 -> ',
     "masked_to_account": 'Счет **5678'
 }
 
@@ -16,7 +15,7 @@ GET_OPERATION_DATA = [
         {
             'from': 'Credit Card Number 1234567812345678',
             'to': 'Счет 1234567812345678',
-            'date': '2022-01-01T10:00:00',
+            'date': '2022-01-01T10:00:00.972075',
             'description': 'Test Operation',
             'operationAmount': {
                 'amount': "475",
@@ -39,7 +38,7 @@ GET_OPERATION_DATA = [
     (
         {
             'to': 'Счет 1234567812345678',
-            'date': '2022-03-01T10:00:00',
+            'date': '2022-03-01T10:00:00.000000',
             'description': 'Открытие вклада',
             'operationAmount': {
                 'amount': "5478",
@@ -49,7 +48,7 @@ GET_OPERATION_DATA = [
             }
         },
         {
-            "date": "2022-03-01",
+            "date": "01.03.2022",
             "description": 'Открытие вклада',
             "amount": "5478",
             "currency": 'руб.',
@@ -88,10 +87,10 @@ def json_test_data():
     Returns a list of dictionaries representing test data.
     """
     return [
-        {'state': 'EXECUTED', 'date': '2022-01-01'},
-        {'state': 'CANCELED', 'date': '2022-02-01'},
-        {'state': 'EXECUTED', 'date': '2022-03-01'},
-        {'state': 'EXECUTED', 'date': '2022-04-01'}
+        {'state': 'EXECUTED', 'date': '01.01.2022'},
+        {'state': 'CANCELED', 'date': '01.02.2022'},
+        {'state': 'EXECUTED', 'date': '01.03.2022'},
+        {'state': 'EXECUTED', 'date': '01.04.2022'}
     ]
 
 
@@ -241,7 +240,7 @@ MOCK_OPERATIONS = [
 
 MOCK_OPERATION_DATA = [
         {
-            "date": "2019-08-26",
+            "date": "26.08.2019",
             "description": "Перевод организации",
             "masked_from_account": "Maestro 1596 83** **** 5199 -> ",
             "masked_to_account": "Счет **9589",
@@ -249,7 +248,7 @@ MOCK_OPERATION_DATA = [
             "currency": "руб."
         },
         {
-            "date": "2019-07-03",
+            "date": "03.07.2019",
             "description": "Перевод организации",
             "masked_from_account": "MasterCard 7158 30** **** 6758 -> ",
             "masked_to_account": "Счет **5560",
@@ -257,7 +256,7 @@ MOCK_OPERATION_DATA = [
             "currency": "USD"
         },
         {
-            "date": "2018-03-23",
+            "date": "23.02.2018",
             "description": "Открытие вклада",
             "masked_from_account": "",
             "masked_to_account": "Счет **2431",
@@ -265,7 +264,7 @@ MOCK_OPERATION_DATA = [
             "currency": "руб."
         },
         {
-            "date": "2018-02-23",
+            "date": "23.02.2018",
             "description": "Открытие вклада",
             "masked_from_account": "",
             "masked_to_account": "Счет **2431",

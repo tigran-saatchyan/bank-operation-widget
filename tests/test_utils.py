@@ -33,11 +33,11 @@ def test_filter_executed_operations(json_test_data):
     """
     result = filter_executed_operations(json_test_data)
     assert len(result) == 3, "Expected 3 executed operations"
-    assert result[0]['date'] == '2022-04-01', "First operation should have " \
+    assert result[0]['date'] == '01.04.2022', "First operation should have " \
                                               "the latest date"
-    assert result[1]['date'] == '2022-03-01', "Second operation should have " \
+    assert result[1]['date'] == '01.03.2022', "Second operation should have " \
                                               "the second-latest date"
-    assert result[2]['date'] == '2022-01-01', "Third operation should have " \
+    assert result[2]['date'] == '01.01.2022', "Third operation should have " \
                                               "the oldest date"
 
 
@@ -104,7 +104,7 @@ def test_print_operation():
     printed_output = captured_stdout.getvalue()
     sys.stdout = sys.__stdout__
 
-    expected_output = """2022-01-01 Test Operation
+    expected_output = """01.01.2022 Test Operation
 Credit Card Number 1234 56** **** 5678 -> Счет **5678
 475 USD
 
