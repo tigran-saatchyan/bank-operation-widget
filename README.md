@@ -4,6 +4,7 @@
 
 ![alt text](https://img.shields.io/badge/Python-v3.10.6-green?style=for-the-badge&logo=appveyor "Python")
 [![Pylint](https://github.com/tigran-saatchyan/bank-operation-widget/actions/workflows/pylint.yml/badge.svg)](https://github.com/tigran-saatchyan/bank-operation-widget/actions/workflows/pylint.yml)
+[![Python package](https://github.com/tigran-saatchyan/bank-operation-widget/actions/workflows/python-package.yml/badge.svg?branch=develop)](https://github.com/tigran-saatchyan/bank-operation-widget/actions/workflows/python-package.yml)
 ***
 
 
